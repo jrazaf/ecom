@@ -27,6 +27,8 @@ const PostalCodeInput = () => {
         className={`w-full p-2 border ${error ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
         placeholder="Entrez votre code postal"
         maxLength="5"
+        minLength="5"
+        required
       />
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
