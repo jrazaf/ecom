@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import PostalCodeInput from '../components/PostalCodeInput';
+import PhoneNumberInput from '../components/PhoneNumberInput';
+import NumCardInput from '../components/NumCardInput';
 
 const Checkout = () => {
 
@@ -77,20 +80,11 @@ const Checkout = () => {
                 value={contactInfo.name}
                 onChange={handleContactChange}
                 className="w-full p-2 border border-gray-300"
+                placeholder="Entrez votre nom"
                 required
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">Téléphone</label>
-              <input
-                type="text"
-                name="phone"
-                value={contactInfo.phone}
-                onChange={handleContactChange}
-                className="w-full p-2 border border-gray-300"
-                required
-              />
-            </div>
+            <PhoneNumberInput />
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2">Email</label>
               <input
@@ -99,6 +93,7 @@ const Checkout = () => {
                 value={contactInfo.email}
                 onChange={handleContactChange}
                 className="w-full p-2 border border-gray-300"
+                placeholder="Entrez votre email"
                 required
               />
             </div>
@@ -113,20 +108,11 @@ const Checkout = () => {
                 value={shippingAddress.address}
                 onChange={handleAddressChange}
                 className="w-full p-2 border border-gray-300"
+                placeholder="Entrez votre adresse"
                 required
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">Code Postal</label>
-              <input
-                type="text"
-                name="postalCode"
-                value={shippingAddress.postalCode}
-                onChange={handleAddressChange}
-                className="w-full p-2 border border-gray-300"
-                required
-              />
-            </div>
+            <PostalCodeInput />
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2">Ville</label>
               <input
@@ -135,6 +121,7 @@ const Checkout = () => {
                 value={shippingAddress.city}
                 onChange={handleAddressChange}
                 className="w-full p-2 border border-gray-300"
+                placeholder="Entrez votre ville"
                 required
               />
             </div>
@@ -174,18 +161,10 @@ const Checkout = () => {
               </select>
             </div>
             {paymentMethod === 'card' && (
+              
               <div className="mb-4">
-                <div className="mb-4">
-                  <label className="block text-sm font-bold mb-2">Numéro de carte</label>
-                  <input
-                    type="text"
-                    name="cardNumber"
-                    value={cardInfo.cardNumber}
-                    onChange={handleCardInfoChange}
-                    className="w-full p-2 border border-gray-300"
-                    required
-                  />
-                </div>
+                <NumCardInput />
+
                 <div className="mb-4">
                   <label className="block text-sm font-bold mb-2">Date de fin</label>
                   <input
@@ -206,10 +185,13 @@ const Checkout = () => {
                     value={cardInfo.cvv}
                     onChange={handleCardInfoChange}
                     className="w-full p-2 border border-gray-300"
+                    maxLength="3"
+                    placeholder="Entrez votre le code CCV"
                     required
                   />
                 </div>
-              </div>
+                </div>
+              
             )}
             <button
               type="submit"
