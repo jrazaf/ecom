@@ -51,8 +51,10 @@ const Checkout = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handlePayment = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    // Logic to handle payment and order processing
     alert('Commande effectuée avec succès!');
     navigate('/');
   };
@@ -62,6 +64,7 @@ const Checkout = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Checkout</h1>
+      <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <div className="border p-4 mb-4">
@@ -208,9 +211,8 @@ const Checkout = () => {
                 </div>
               </div>
             )}
-          
             <button
-              onClick={handlePayment}
+              type="submit"
               className="bg-blue-500 text-white p-2 mt-4 w-full hover:bg-blue-700 transition-colors"
             >
               Payer
@@ -218,6 +220,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      </form>
     </div>
   );
 };
