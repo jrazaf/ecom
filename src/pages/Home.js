@@ -9,9 +9,17 @@ const Home = () => {
   const { dispatch } = useCart();
 
   useEffect(() => {
-    fetchProducts().then(products => {
-      setLatestProducts(products.slice(-6).reverse());
-    });
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('https://dummyjson.com/products?limit=6&sort=-createdAt');
+        const data = await response.json();
+        setLatestProducts(data.products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const addToCart = (product) => {
