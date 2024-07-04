@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 import PostalCodeInput from '../components/PostalCodeInput';
 import PhoneNumberInput from '../components/PhoneNumberInput';
 import NumCardInput from '../components/NumCardInput';
+import CodeCcvInput from '../components/CodeCcvInput';
 
 const Checkout = () => {
 
@@ -163,7 +164,7 @@ const Checkout = () => {
             {paymentMethod === 'card' && (
               
               <div className="mb-4">
-                
+
                 <NumCardInput />
 
                 <div className="mb-4">
