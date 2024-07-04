@@ -19,7 +19,7 @@ const CodeCcvInput = () => {
 
   return (
     <div className="mb-4">
-      <label className="block text-sm font-bold mb-2">Code CCV</label>
+      <label className="block text-sm font-bold mb-2">Numéro à 3 chiffres (CVV)</label>
       <input
         type="text"
         value={codeCcv}

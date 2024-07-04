@@ -163,6 +163,7 @@ const Checkout = () => {
             {paymentMethod === 'card' && (
               
               <div className="mb-4">
+                
                 <NumCardInput />
 
                 <div className="mb-4">
@@ -177,20 +178,10 @@ const Checkout = () => {
                     required
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-bold mb-2">Numéro à 3 chiffres (CVV)</label>
-                  <input
-                    type="text"
-                    name="cvv"
-                    value={cardInfo.cvv}
-                    onChange={handleCardInfoChange}
-                    className="w-full p-2 border border-gray-300"
-                    maxLength="3"
-                    placeholder="Entrez votre le code CCV"
-                    required
-                  />
-                </div>
-                </div>
+
+                <CodeCcvInput />
+
+              </div>
               
             )}
             <button
