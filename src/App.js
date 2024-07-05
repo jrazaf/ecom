@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute'; 
+import NotFoundPage from './components/NotFoundPage';
 
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -41,6 +42,7 @@ const App = () => {
                 <Checkout />
               </ProtectedRoute>
             } />
+            <Route path="*" element={<NotFoundPage />} /> 
           </Routes>
           <Footer />
           <ToastContainer limit={1} />
