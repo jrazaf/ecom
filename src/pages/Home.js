@@ -1,6 +1,6 @@
 // src/pages/Home.js
 import React, { useEffect, useState } from 'react';
-import { fetchProducts } from '../api/dummyjson';
+import { fetchLastProducts } from '../api/dummyjson';
 import { useCart } from '../context/CartContext';
 import imgecommerce from '../images/ecommerce.jpg';
 
@@ -9,18 +9,23 @@ const Home = () => {
   const { dispatch } = useCart();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('https://dummyjson.com/products?limit=6&sort=-createdAt');
-        const data = await response.json();
-        setLatestProducts(data.products);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProducts();
+    fetchLastProducts().then(setLatestProducts);
   }, []);
+
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await fetch('https://dummyjson.com/products?limit=6&sort=-createdAt');
+  //       const data = await response.json();
+  //       setLatestProducts(data.products);
+  //     } catch (error) {
+  //       console.error('Error fetching products:', error);
+  //     }
+  //   };
+
+  //   fetchProducts();
+  // }, []);
 
   const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', product });

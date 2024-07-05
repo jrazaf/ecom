@@ -7,6 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { auth } = useAuth();
 
   if (!auth) {
+    alert('Pour commander un produit, il faut se connecter');
     return <Navigate to="/login" />;
   }
 

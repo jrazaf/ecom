@@ -7,6 +7,12 @@ export const fetchProducts = async () => {
   return data.products;
 };
 
+export const fetchLastProducts = async () => {
+  const response = await fetch(`${API_URL}/products?limit=6&sort=-createdAt'`);
+  const data = await response.json();
+  return data.products;
+};
+
 export const fetchCategories = async () => {
   const response = await fetch(`${API_URL}/products/category-list`);
   const data = await response.json();
